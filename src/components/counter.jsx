@@ -6,17 +6,13 @@ class Counter extends Component {
   };
 
   formatCount = () => {
-    let { value: count } = this.state;
+    let { value: count } = this.props.counter;
     return count ? count : "Zero";
   };
 
   formatBadges = () => {
-    let { value: count } = this.state;
+    let { value: count } = this.props.counter;
     return count ? "primary" : "warning";
-  };
-
-  handleIncrement = () => {
-    this.setState({ value: this.state.value + 1 });
   };
 
   render() {
@@ -26,7 +22,7 @@ class Counter extends Component {
           {this.formatCount()}
         </span>
         <button
-          onClick={this.handleIncrement}
+          onClick={() => this.props.onIncrement(this.props.counter.id)}
           className="btn btn-secondary btn-sm"
         >
           Increment
